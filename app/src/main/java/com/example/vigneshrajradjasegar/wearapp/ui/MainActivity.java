@@ -42,9 +42,14 @@ public class MainActivity extends WearableActivity {
         mWearableRecyclerView.setLayoutManager(
                 new WearableLinearLayoutManager(this, customScrollingLayoutCallback));
 
-        mWearableRecyclerView.setCircularScrollingGestureEnabled(true);
+        // TODO CES 3 LIGNES POSENT PROBLEMES LORS DU SCROLLING A REVERIFIER LEUR UTILITE
+       /* mWearableRecyclerView.setCircularScrollingGestureEnabled(true);
         mWearableRecyclerView.setBezelFraction(0.5f);
-        mWearableRecyclerView.setScrollDegreesPerScreen(90);
+        mWearableRecyclerView.setScrollDegreesPerScreen(90);*/
+
+       // Improves performance because we know changes in content do not change the layout size of
+        // the RecyclerView.
+        mWearableRecyclerView.setHasFixedSize(true);
         // Specifies an adapter (see also next example).
         mCustomRecyclerAdapter = new CustomRecyclerAdapter(
                 DATA_LIST, this);
