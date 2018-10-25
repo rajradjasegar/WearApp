@@ -1,4 +1,4 @@
-package com.example.vigneshrajradjasegar.wearapp;
+package com.example.vigneshrajradjasegar.wearapp.ui;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -7,6 +7,8 @@ import android.support.wearable.activity.ConfirmationActivity;
 import android.support.wearable.activity.WearableActivity;
 import android.util.Log;
 import android.view.View;
+
+import com.example.vigneshrajradjasegar.wearapp.R;
 
 public class SecondActivity extends WearableActivity {
 
@@ -23,8 +25,8 @@ public class SecondActivity extends WearableActivity {
         Log.d("log wear", "SUCCESS CLICKED !");
         Intent intent = new Intent(this, ConfirmationActivity.class);
         intent.putExtra(ConfirmationActivity.EXTRA_ANIMATION_TYPE,
-                ConfirmationActivity.SUCCESS_ANIMATION);
-        intent.putExtra(ConfirmationActivity.EXTRA_MESSAGE, "Success!");
+                ConfirmationActivity.FAILURE_ANIMATION);
+        intent.putExtra(ConfirmationActivity.EXTRA_MESSAGE, "Failed !");
         startActivity(intent);
         //finish();
     }

@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@color/dark_grey"
     android:padding="@dimen/box_inset_layout_padding"
-    tools:context="com.example.vigneshrajradjasegar.wearapp.MainActivity"
+    tools:context="com.example.vigneshrajradjasegar.wearapp.ui.MainActivity"
     tools:deviceIds="wear">
 
     <FrameLayout
@@ -16,19 +16,28 @@
         android:padding="@dimen/inner_frame_layout_padding"
         app:boxedEdges="all">
 
+
+
+        <android.support.wear.widget.WearableRecyclerView
+            android:id="@+id/recycler_launcher_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="vertical"
+            />
+
+        <!-- Stacks the text field above the WearableRecyclerView at the top of the screen. -->
+        <!-- putting the test after the recycler view makes it inflate above the recycler view then we can play
+        on gravity to show it at the top or at the bottom
+        padding attributes gives the possibility to put space between text and borders-->
         <TextView
             android:id="@+id/text"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/hello_world" />
-
-        <Button
-            android:id="@+id/button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="just click"
-            android:onClick="onClick"/>
+            android:text="@string/hello_world"
+            android:textAlignment="center"
+            android:paddingTop="@dimen/activity_main_text_header_spacing"
+            android:paddingBottom="@dimen/activity_main_text_header_spacing"
+            android:background="@color/grey" />
 
     </FrameLayout>
 </android.support.wear.widget.BoxInsetLayout>
