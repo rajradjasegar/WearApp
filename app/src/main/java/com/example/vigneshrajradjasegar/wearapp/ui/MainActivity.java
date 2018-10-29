@@ -73,6 +73,7 @@ public class MainActivity extends WearableActivity {
                 break;
             case "Create a Notification":
                 createSimpleNotification();
+                finish();
                 break;
         }
     }
