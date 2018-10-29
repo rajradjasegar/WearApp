@@ -32,11 +32,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.SecondActivity"></activity>
+        <activity android:name=".ui.SecondActivity" />
+        <activity android:name="android.support.wearable.activity.ConfirmationActivity"></activity>
         <activity
-            android:name="android.support.wearable.activity.ConfirmationActivity">
-        </activity>
+            android:name=".ui.NotificationActivity"
+            android:label="@string/title_activity_notification">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

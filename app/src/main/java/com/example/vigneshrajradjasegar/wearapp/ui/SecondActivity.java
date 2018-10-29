@@ -25,8 +25,8 @@ public class SecondActivity extends WearableActivity {
         Log.d("log wear", "SUCCESS CLICKED !");
         Intent intent = new Intent(this, ConfirmationActivity.class);
         intent.putExtra(ConfirmationActivity.EXTRA_ANIMATION_TYPE,
-                ConfirmationActivity.FAILURE_ANIMATION);
-        intent.putExtra(ConfirmationActivity.EXTRA_MESSAGE, "Failed !");
+                ConfirmationActivity.SUCCESS_ANIMATION);
+        intent.putExtra(ConfirmationActivity.EXTRA_MESSAGE, "SUCCESS !");
         startActivity(intent);
         //finish();
     }
