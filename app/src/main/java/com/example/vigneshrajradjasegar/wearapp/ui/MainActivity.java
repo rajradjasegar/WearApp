@@ -1,7 +1,10 @@
 package com.example.vigneshrajradjasegar.wearapp.ui;
 
+import android.app.Notification;
 import android.app.PendingIntent;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.wear.widget.WearableLinearLayoutManager;
 import android.support.wearable.activity.WearableActivity;
@@ -24,7 +27,7 @@ public class MainActivity extends WearableActivity {
     private WearableRecyclerView mWearableRecyclerView;
     private CustomRecyclerAdapter mCustomRecyclerAdapter;
     private TextView mTextView;
-    String []  DATA_LIST = {"JUST CLICK", "Create a Notification", "Msg Mobile", "Req API", "Custom Face"};
+    String []  DATA_LIST = {"JUST CLICK", "Create a Notification", "Create Notif image", "Msg Mobile", "Req API", "Custom Face", "MQTT Listener"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,7 +76,11 @@ public class MainActivity extends WearableActivity {
                 break;
             case "Create a Notification":
                 createSimpleNotification();
-                finish();
+                finish(); // We finish the activity because we want to come back on Notification FeedBack
+                break;
+            case "Create Notif image":
+                createBigPictureNotification();
+                finish(); // We finish the activity because we want to come back on Notification FeedBack
                 break;
         }
     }
@@ -108,5 +115,33 @@ public class MainActivity extends WearableActivity {
 
         // Issue the notification with notification manager.
         notificationManager.notify(notificationId, notificationBuilder.build());
+    }
+
+    public void createBigPictureNotification(){
+
+        int notificationId = 001;
+        // The channel ID of the notification.
+        String id = "notification_channel_01";
+        // Build intent for notification content
+        Intent viewIntent = new Intent(this, NotificationActivity.class);
+        PendingIntent viewPendingIntent =
+                PendingIntent.getActivity(this, 0, viewIntent, 0);
+
+        Bitmap myLogo = BitmapFactory.decodeResource(this.getResources(), R.drawable.radiant);
+
+        Notification notification = new Notification.Builder(this)
+                .setContentTitle("RADIANT IMAGE NOTIF ")
+                .setContentText("Radiant is a good manga !")
+                .setSmallIcon(R.drawable.tag)
+                .setStyle(new Notification.BigPictureStyle()
+                        .bigPicture(myLogo))
+                .build();
+
+        // Get an instance of the NotificationManager service
+        NotificationManagerCompat notificationManager =
+                NotificationManagerCompat.from(this);
+
+        // Issue the notification with notification manager.
+        notificationManager.notify(notificationId, notification);
     }
 }
